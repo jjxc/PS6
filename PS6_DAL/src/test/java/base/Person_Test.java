@@ -49,6 +49,32 @@ public class Person_Test {
 		person1.setStreet("702 Stone Gate Blvd");
 		person1.setPostalCode(21921);
 		
+		PersonDAL.addPerson(person1);
+		
+	}
+	
+	@Test
+	public void testAddPers(){
+		assertEquals(PersonDAL.addPerson(person1).getPersonID()) == person1.getPersonID();
+	}
+	
+	@Test
+	public void testUpdPers(){
+	}
+	
+	@Test
+	public void testDelPers(){
+		
+	}
+	
+	@Test
+	public void testGetPers(){
+		assertEquals(PersonDAL.getPerson(person1.getPersonID()).getPersonID(), person1.getPersonID());
+	}
+	
+	@Test
+	public void testGetAllPers(){
+		assertEquals(PersonDAL.getAllPersons().get(0).getPersonID(), person1.getPersonID());
 	}
 	
 	
