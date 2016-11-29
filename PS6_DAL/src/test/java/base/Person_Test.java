@@ -36,7 +36,7 @@ public class Person_Test {
 		try {
 			person1Birth = dateFormat.parse("1994-11-27");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -48,34 +48,48 @@ public class Person_Test {
 		person1.setCity("Elkton");
 		person1.setStreet("702 Stone Gate Blvd");
 		person1.setPostalCode(21921);
+	
 		
-		PersonDAL.addPerson(person1);
-		
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		//Need to reset to original state
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
 	}
 	
 	@Test
 	public void testAddPers(){
-		assertEquals(PersonDAL.addPerson(person1).getPersonID()) == person1.getPersonID();
-	}
-	
-	@Test
-	public void testUpdPers(){
-	}
-	
-	@Test
-	public void testDelPers(){
-		
+		assertEquals(person1, PersonDAL.addPerson(person1));
 	}
 	
 	@Test
 	public void testGetPers(){
-		assertEquals(PersonDAL.getPerson(person1.getPersonID()).getPersonID(), person1.getPersonID());
+		
 	}
 	
 	@Test
 	public void testGetAllPers(){
-		assertEquals(PersonDAL.getAllPersons().get(0).getPersonID(), person1.getPersonID());
+	
 	}
+	
+	@Test
+	public void testUpdPers(){
+		assertEquals(person1, PersonDAL.updatePerson(person1));
+	}
+	
+	@Test
+	public void testDelPers(){
+		assertEquals(person1, PersonDAL.deletePerson(person1UUID));
+	}
+	
 	
 	
 
